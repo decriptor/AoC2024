@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Inputs", "Inputs", "{B1DCFA
 		Inputs\Day1Basic.txt = Inputs\Day1Basic.txt
 		Inputs\Day2.txt = Inputs\Day2.txt
 		Inputs\Day2Basic.txt = Inputs\Day2Basic.txt
+		Inputs\Day3.txt = Inputs\Day3.txt
+		Inputs\Day3Basic.txt = Inputs\Day3Basic.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day1", "src\Day1\Day1.csproj", "{82877337-0D78-499B-A965-80EFABB87FD1}"
@@ -23,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		global.json = global.json
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day3", "src\Day3\Day3.csproj", "{0D36294C-69A3-44D2-85CF-8B429C7AC8CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +46,10 @@ Global
 		{07A2DA03-0AD1-4105-8C66-9E08BE123A3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07A2DA03-0AD1-4105-8C66-9E08BE123A3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07A2DA03-0AD1-4105-8C66-9E08BE123A3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D36294C-69A3-44D2-85CF-8B429C7AC8CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D36294C-69A3-44D2-85CF-8B429C7AC8CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D36294C-69A3-44D2-85CF-8B429C7AC8CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D36294C-69A3-44D2-85CF-8B429C7AC8CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
