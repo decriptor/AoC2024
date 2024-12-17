@@ -1,58 +1,61 @@
-﻿using static Utils.Utils;
+using static Utils.Utils;
 
 // Get input data
-var inputs = GetInputs(2);
-//var inputs = GetBasicInputs(2);
+var reports = GetInputs (2);
+//var reports = GetBasicInputs(2);
 
-// Part 1
 int safeCount = 0;
-foreach (var input in inputs)
-{
-    var parts = input.Split(' ');
-    List<int> ints = [.. parts.Select(int.Parse)];
+int safeCountPart2 = 0;
 
-    if (IsSafe(ints))
-        safeCount++;
+foreach (var report in reports) {
+	var parts = report.Split (' ');
+	List<int> levels = [.. parts.Select (int.Parse)];
+	bool ascending = levels[0] < levels[1];
+
+	if (IsReportSafe (levels)) {
+		safeCount++;
+	} else {
+		if (IsReportSafeWithDampener (levels))
+			safeCountPart2++;
+	}
 }
 
-bool IsSafe(List<int> ints)
+Console.WriteLine ($"Part 1: {safeCount}"); // 472
+Console.WriteLine ($"Part 2: {safeCount + safeCountPart2}"); // 520
+
+bool IsReportSafe (List<int> levels)
 {
-    var result = CheckNumberSpacing(ints);
-    if (!result)
-        return false;
+	bool ascending = levels[0] < levels[1];
 
-    bool isAscending = true;
-    for (int i = 0; i < ints.Count - 1; i++)
-    {
-        if (ints[i] > ints[i + 1])
-        {
-            isAscending = false;
-        }
-    }
+	for (int i = 0; i < levels.Count - 1; i++) {
+		if (!TestLevelRules (levels[i], levels[i + 1], ascending))
+			return false;
+	}
 
-    bool isDescending = true;
-    for (int i = 0; i < ints.Count - 1; i++)
-    {
-        if (ints[i] < ints[i + 1])
-            isDescending = false;
-    }
-
-    if (!isAscending && !isDescending)
-        return false;
-
-    return true;
+	return true;
 }
 
-Console.WriteLine($"Part 1: {safeCount}"); // 472
-
-static bool CheckNumberSpacing(List<int> ints)
+bool IsReportSafeWithDampener (List<int> levels)
 {
-    for (int i = 0; i < ints.Count - 1; i++)
-    {
-        var diff = Math.Abs(ints[i] - ints[i + 1]);
-        if (diff < 1 || diff > 3)
-            return false;
-    }
+	for (int i = 0; i < levels.Count; i++) {
+		var newList = levels.Where ((_, index) => i != index).ToList ();
+		if (IsReportSafe (newList))
+			return true;
+	}
 
-    return true;
+	return false;
+}
+
+bool TestLevelRules (int i, int j, bool ascending)
+{
+	var diff = Math.Abs (i - j);
+	if (diff is < 1 or > 3) {
+		return false;
+	}
+
+	if (ascending) {
+		return i < j;
+	} else {
+		return i > j;
+	}
 }
